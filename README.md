@@ -7,5 +7,5 @@ The bioinformatic workflow is designed for the detection of single nucleotide  v
 - Picards
 - Samtools
 - GATK
-- VarScan
+- VarScan2
 - Annovar
