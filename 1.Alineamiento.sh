@@ -20,7 +20,7 @@ do
 	file2=$(echo $file1 | sed 's:_R1_:_R2_:g')
 	samplename=$(echo $file1 | sed 's:_R1_001.fastq.gz::g')
 	echo 'Comenzando alineamiento de la muestra:' $samplename
-	time bwa mem -t 6 -M /reference.fa $file1 $file2 > $samplename'.sam'
+	time bwa mem -t 38 -M /reference.fa $file1 $file2 > $samplename'.sam'
 done
 
 
