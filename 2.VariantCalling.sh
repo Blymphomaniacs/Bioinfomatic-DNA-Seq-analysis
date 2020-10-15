@@ -25,7 +25,7 @@ do
 	echo "Done!"
 done
 
-# mpileup2017 para archivo de VarScan
+# Samtools mpileup para generar archivo de VarScan2
 
 for file in *.sorted.bam
 do
@@ -41,6 +41,8 @@ done
 
 
 # VarScan SNPs e INDELs
+# La herramienta VarScan2 se puede descargar desde: http://varscan.sourceforge.net/
+
 
 cd $1
 
@@ -52,13 +54,13 @@ Varscan_snp='java -jar /herramientas/VarScan-2.3.9/VarScan.v2.3.9.jar mpileup2sn
 for file in *.mpileup
 do
 	file_name=$( echo $file | sed 's:.mpileup::g' )
-	echo "Calling SNPs para: "$file_name
+	echo "Calling SNPs for: "$file_name
 	time $Varscan_snp $file --strand-filter 1 \
 	--min-var-freq 0 \
 	--output-vcf 1 > ./$file_name".varscan.snp.vcf"
 	echo "VCF SNPs file for: "$file_name" has been generated"
 	echo '----'
-	echo "Calling INDELs para: "$file_name
+	echo "Calling INDELs for: "$file_name
 	time $Varscan_indel $file --strand-filter 1 \
 	--min-var-freq 0 \
 	--output-vcf 1 > ./$file_name".varscan.indel.vcf"
